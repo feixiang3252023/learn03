@@ -1,5 +1,5 @@
 import psycopg2  
-
+"""
 # 连接到 PostgreSQL  
 conn = psycopg2.connect(  
     dbname='postgres',  
@@ -14,7 +14,8 @@ conn.autocommit = True
 cur = conn.cursor()  
 cur.execute("CREATE DATABASE db2;")  
 cur.close()  
-conn.close()  
+conn.close() 
+""" 
 
 # 连接到新创建的数据库  
 conn = psycopg2.connect(  
@@ -24,9 +25,10 @@ conn = psycopg2.connect(
     host='localhost',  
     port='5432'  
 )  
-
-# 创建学生表和成绩表  
 cur = conn.cursor()  
+
+''' 
+# 创建学生表和成绩表  
 cur.execute("""  
 CREATE TABLE students (  
     id SERIAL PRIMARY KEY,  
@@ -43,7 +45,7 @@ CREATE TABLE scores (
 );  
 """)  
 conn.commit()  
-
+'''
 # 插入学生和成绩数据  
 cur.execute("INSERT INTO students (name, age) VALUES (%s, %s) RETURNING id;", ('Alice', 20))  
 student_id_1 = cur.fetchone()[0]  
